@@ -3,10 +3,10 @@ import { Send as SendIcon } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingTop: theme.spacing(10),
     position: "sticky",
     top: theme.spacing(10),
-    padding: theme.spacing(1)
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1)
   },
   card: {
     padding: theme.spacing(1),

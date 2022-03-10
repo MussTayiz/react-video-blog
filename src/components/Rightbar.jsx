@@ -2,10 +2,9 @@ import { Container, makeStyles, Typography } from '@material-ui/core'
 import RightbarPostCard from './RightbarPostCard'
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingTop: theme.spacing(10),
     position: "sticky",
     top: theme.spacing(10),
-    paddingLeft: theme.spacing(1)
+    paddingLeft: theme.spacing(1),
   },
   title: {
     marginTop: theme.spacing(2),
