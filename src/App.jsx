@@ -4,10 +4,10 @@ import Navbar from './components/Navbar';
 import Feed from './components/Feed';
 import Leftbar from './components/Leftbar';
 import Rightbar from './components/Rightbar';
+import Footer from './components/Footer';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Golden from './pages/Golden'
 import Dogs from './pages/Dogs'
 import Articles from './pages/Articles'
 import Contact from './pages/Contact'
@@ -40,10 +40,11 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     display: "flex",
-    bottom: 0, 
-    position:"sticky",
-    marginTop: theme.spacing(5),
-    backgroundColor: "red"
+        bottom: 0,
+        position: "sticky",
+        marginTop: theme.spacing(5),
+        textAlign: "center",
+        backgroundColor: "#5463FF",
   }
 }))
 
@@ -66,7 +67,6 @@ function App() {
             
           <Routes>
                 <Route path="/" element={<Feed />} />
-                <Route path="golden" element={<Golden />} />
                 <Route path="dogs" element={<Dogs />} />
                 <Route path="articles" element={<Articles />} />
                 <Route path="contact" element={<Contact />} />
@@ -77,7 +77,9 @@ function App() {
             <Rightbar /> 
           </Grid>
         </Grid>
-        <Grid item sm={12} xs={12} className={classes.footer}>Footer</Grid>
+        <Grid item sm={12} xs={12} className={classes.footer}>
+          <Footer />
+        </Grid>
       </Grid>
     </BrowserRouter>
   );

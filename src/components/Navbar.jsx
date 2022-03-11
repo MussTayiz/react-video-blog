@@ -35,8 +35,7 @@ function Navbar() {
                 value={value}
                 onChange={handleChange}>
                 <Tab className={classes.tab} link icon={<HomeIcon />}  component={Link} to="/" label="HOME" />
-                <Tab className={classes.tab} icon={<Pets />} label="GOLDEN" component={Link} to="/golden" />
-                <Tab className={classes.tab} icon={<AcUnit />} label="DOGS" component={Link} to="/dogs" />
+                <Tab className={classes.tab} icon={<Pets />} label="DOGS" component={Link} to="/dogs" />
                 <Tab className={classes.tab} icon={<Assignment />} label="ARTICLES" component={Link} to="/articles" />
                 <Tab className={classes.tab} icon={<Phone />} label="CONTACT" component={Link} to="/contact" />
             </Tabs>

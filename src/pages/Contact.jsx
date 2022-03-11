@@ -96,7 +96,7 @@ const Contact = () => {
             />
           </div>
           <br />
-          <Button style={{ float: "right", textAlign: "center" }} type="submit" variant="contained" color="primary" endIcon={<SendIcon />} size="large">Send Message</Button>
+          <Button style={{ float: "right", textAlign: "center" }} type="submit" variant="contained" endIcon={<SendIcon />} size="large">Send Message</Button>
         </form>
       </Grid>
     </Container>

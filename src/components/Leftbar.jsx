@@ -29,17 +29,17 @@ function Leftbar() {
   const classes = useStyles()
   return (
     <Container className={classes.container}>
-      {OtherSitesCard({
+      {GoSitesCard({
         classes: classes,
         title: "Page 1",
         imageLink: "https://mui.com/static/images/cards/paella.jpg"
       })}
-      {OtherSitesCard({
+      {GoSitesCard({
         classes: classes,
         title: "Page 2",
         imageLink: "https://mui.com/static/images/cards/paella.jpg"
       })}
-      {OtherSitesCard({
+      {GoSitesCard({
         classes: classes,
         title: "Page 3",
         imageLink: "https://mui.com/static/images/cards/paella.jpg"
@@ -48,7 +48,7 @@ function Leftbar() {
   );
 }
 
-function OtherSitesCard({ classes, title, imageLink, siteUrl }) {
+export const  GoSitesCard = ({ classes, title, imageLink, siteUrl }) => {
   return (
     <Card sx={{ maxWidth: 345 }} className={classes.card}>
       <CardContent>
@@ -59,7 +59,6 @@ function OtherSitesCard({ classes, title, imageLink, siteUrl }) {
       <CardMedia
         component="img"
         alt="green iguana"
-        height="140"
         className={classes.cardMedia}
         image={imageLink}
       />
