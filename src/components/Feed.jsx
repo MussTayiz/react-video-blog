@@ -1,10 +1,13 @@
 import { Container, makeStyles, Grid, Typography } from '@material-ui/core'
 import VideoPlayer from './VideoPlayer'
-import React from 'react'
+import { useState } from 'react'
 import Post from './Post'
+import { useVideoUrl } from '../context/VideoContext'
+import db from '../BackendServices/db.json'
+
 
 const url = 'https://www.youtube.com/watch?v=ysz5S6PUM-U'
- 
+
 const useStyle = makeStyles((theme) => ({
     container: {
     },
@@ -19,29 +22,43 @@ const useStyle = makeStyles((theme) => ({
         marginBottom: theme.spacing(2)
     }
 }))
-function Feed() {
+
+const dbJson = [
+    { "video1": "Meet Irwin | Sponsor a Puppy", },
+    { "video1": "Meet Irwin | Sponsor a Puppy", },
+    { "video1": "Meet Irwin | Sponsor a Puppy", }
+]
+
+const stockData = [
+    {
+        "company": "Twitter Inc",
+        "ticker": "TWTR",
+        "stockPrice": "22.76 USD",
+        "timeElapsed": "5 sec ago",
+    },
+];
+
+const Feed = () => {
+    const { videoUrl } = useVideoUrl()
     const classes = useStyle()
+
     return (
         <Container className={classes.container}>
-            <VideoPlayer url={url} />
+            <VideoPlayer url={videoUrl} />
             <div className={classes.feedTitleBox}>
                 <Typography variant='button'>New</Typography>
             </div>
             <Container>
                 <Grid container rowspacing={1} direction='row' justifyContent='center' alignItems='center'>
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
-                    <Post />
+                    {db.map((video, key) => {
+                        return (
+                            <Post
+                                title={video.title}
+                                imageUrl={video.imageUrl}
+                                incomingVideoUrl={video.videoUrl}
+                            />
+                        )
+                    })}
                 </Grid>
             </Container>
         </Container>
@@ -49,3 +66,7 @@ function Feed() {
 }
 
 export default Feed
+
+/*
+
+                                */

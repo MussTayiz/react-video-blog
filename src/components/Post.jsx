@@ -1,5 +1,7 @@
 import { Card, CardActionArea, CardMedia, CardContent, makeStyles, Typography, CardActions, Grid, IconButton } from '@material-ui/core'
 import { Share, Favorite, Person } from '@material-ui/icons'
+import { useVideoUrl } from '../context/VideoContext'
+
 const useStyles = makeStyles((theme) => ({
     container: {
         paddingTop: theme.spacing(10)
@@ -27,36 +29,44 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Post() {
+function Post(props) {
+    const { videoUrl, setVideoUrl } = useVideoUrl()
     const classes = useStyles()
+
+    const handleClick = (incomingVideoUrl) => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setVideoUrl(incomingVideoUrl)
+    }
+    console.log(props)
     return (
         <Grid item className={classes.post} xs={12} sm={12} md={3}>
             <Card className={classes.card}>
-                <CardActionArea>
+                <CardActionArea onClick={() => handleClick(props.incomingVideoUrl)}>
                     <CardMedia
                         className={classes.media}
-                        image="https://mui.com/static/images/cards/contemplative-reptile.jpg"
+                        image={props.imageUrl}
                         title="My Post"
+                        url={props.incomingVideoUrl}
                     />
                     <CardContent>
-                        <Typography gutterBottom variant="h5">My Firtst Post</Typography>
+                        <Typography gutterBottom variant="h5">{props.title}</Typography>
                     </CardContent>
                 </CardActionArea>
                 <div className={classes.actionsIcons}>
-                <CardActions >
-                    <IconButton aria-label="share">
-                        <Share />
-                    </IconButton>
-                    <IconButton aria-label="add to favorites">
-                        <Favorite />
-                    </IconButton>
-                </CardActions>
-                <CardActions>
-                    <IconButton>
-                        <Person />
-                        <Typography variant="button">{50}</Typography>
-                    </IconButton>
-                </CardActions>
+                    <CardActions >
+                        <IconButton aria-label="share">
+                            <Share />
+                        </IconButton>
+                        <IconButton aria-label="add to favorites">
+                            <Favorite />
+                        </IconButton>
+                    </CardActions>
+                    <CardActions>
+                        <IconButton>
+                            <Person />
+                            <Typography variant="button">{50}</Typography>
+                        </IconButton>
+                    </CardActions>
                 </div>
             </Card>
         </Grid>

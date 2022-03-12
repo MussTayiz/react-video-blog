@@ -7,6 +7,7 @@ import Rightbar from './components/Rightbar';
 import Footer from './components/Footer';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { VideoProvider } from './context/VideoContext'
 
 import Dogs from './pages/Dogs'
 import Articles from './pages/Articles'
@@ -18,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex"
   },
   navbar: {
-   position: "sticky",
-   top: 0,
-   "z-index": "1",
-   backgroundColor: "#ECECEC"
+    position: "sticky",
+    top: 0,
+    "z-index": "1",
+    backgroundColor: "#ECECEC"
   },
   feed: {
     height: "auto",
@@ -40,48 +41,50 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     display: "flex",
-        bottom: 0,
-        position: "sticky",
-        marginTop: theme.spacing(5),
-        textAlign: "center",
-        backgroundColor: "#5463FF",
+    bottom: 0,
+    position: "sticky",
+    marginTop: theme.spacing(5),
+    textAlign: "center",
+    backgroundColor: "#5463FF",
   }
 }))
 
 function App() {
   const classes = useStyles()
   return (
-    <BrowserRouter>
-      <Grid container className={classes.container}>
-        <Grid item sm={12} xs={12}>
-          <Header />
-        </Grid>
-        <Grid className={classes.navbar} item sm={12} xs={12}>
-          <Navbar />
-        </Grid>
-        <Grid container direction='row' justifyContent='center'>
-          <Grid item sm={2} className={classes.left}>
-            <Leftbar />
+    <VideoProvider>
+      <BrowserRouter>
+        <Grid container className={classes.container}>
+          <Grid item sm={12} xs={12}>
+            <Header />
           </Grid>
-          <Grid item sm={8} xs={12} className={classes.feed}>
-            
-          <Routes>
+          <Grid className={classes.navbar} item sm={12} xs={12}>
+            <Navbar />
+          </Grid>
+          <Grid container direction='row' justifyContent='center'>
+            <Grid item sm={2} className={classes.left}>
+              <Leftbar />
+            </Grid>
+            <Grid item sm={8} xs={12} className={classes.feed}>
+
+              <Routes>
                 <Route path="/" element={<Feed />} />
                 <Route path="dogs" element={<Dogs />} />
                 <Route path="articles" element={<Articles />} />
                 <Route path="contact" element={<Contact />} />
-            </Routes>
+              </Routes>
 
+            </Grid>
+            <Grid item sm={2} className={classes.right}>
+              <Rightbar />
+            </Grid>
           </Grid>
-          <Grid item sm={2} className={classes.right}>
-            <Rightbar /> 
+          <Grid item sm={12} xs={12} className={classes.footer}>
+            <Footer />
           </Grid>
         </Grid>
-        <Grid item sm={12} xs={12} className={classes.footer}>
-          <Footer />
-        </Grid>
-      </Grid>
-    </BrowserRouter>
+      </BrowserRouter>
+    </VideoProvider>
   );
 }
 
